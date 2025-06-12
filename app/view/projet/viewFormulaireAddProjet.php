@@ -26,7 +26,7 @@ require ($root . '/app/view/fragment/fragmentProjetHeader.html');
     </form>
     <p/>
   </div>
-  <?php include $root . '/app/view/fragment/fragmentCaveFooter.html'; ?>
+  <?php include '/app/view/fragment/fragmentProjetFooter.html'; ?>
 
 <!-- ----- fin viewInsert -->
 
