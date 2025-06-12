@@ -7,7 +7,7 @@ require ($root . '/app/view/fragment/fragmentProjetHeader.html');
         <?php
       include $root . '/app/view/fragment/fragmentProjetMenu.php';
       include $root . '/app/view/fragment/fragmentProjetJumbotron.html';
-      ?>
+      ?><hr>
         <form method="post" action="router.php?action=connect">
           <label for="login">Login:</label>
           <input type="text" name="login" required>

@@ -4,8 +4,8 @@
   <div class="container-fluid">
      <!-- Mettre les actions--> 
          <?php
-         $menu_init='<a class="navbar-brand" href="router.php?action=">VIGNEAU-GODARD|'; 
-         if($_SESSION['login']!="?"){$menu_init=$menu_init.$_SESSION['nom'].$_SESSION['prenom'];}
+         $menu_init='<a class="navbar-brand" href="router.php?action=">VIGNEAU-GODARD |'; 
+         if($_SESSION['login']!="?"){$menu_init=$menu_init.' '.$_SESSION['nom'].' '.$_SESSION['prenom'].' ';}
          $menu_init=$menu_init.'|</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" 
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,7 +27,7 @@
                 <ul class="dropdown-menu text-bg-dark">
                   <li><a class="dropdown-item text-bg-dark" href="router.php?action=loginForm">Login</a></li>
                   <li><a class="dropdown-item text-bg-dark" href="router.php?action=SubscribeForm">S'."'inscrire</a></li>
-                  <li><a class=".'"dropdown-item text-bg-dark" href="router.php?action=">Deconnexion</a></li>
+                  <li><a class=".'"dropdown-item text-bg-dark" href="router.php?action=logout">Deconnexion</a></li>
                 </ul>
          </li>';
          if($_SESSION['login']=="?"){echo $menu_init.$menu;}

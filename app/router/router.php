@@ -7,11 +7,9 @@ require('../controller/ControllerRendezVous.php');
 require('../controller/ControllerAccueil.php');
 require('../controller/ControllerConnexion.php');
 
-#a enlever________________________________________________
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-#___________________________________________________________
 // --- récupération de l'action passée dans l'URL
 $query_string = $_SERVER['QUERY_STRING'];
 

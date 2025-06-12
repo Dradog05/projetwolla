@@ -8,6 +8,7 @@ require ($root . 'app/view/fragment/fragmentProjetHeader.html');
       include $root . 'app/view/fragment/fragmentProjetMenu.php';
       include $root . 'app/view/fragment/fragmentProjetJumbotron.html';
       ?>
+        <hr>
         <h5>Le Login ou le mot de passe est invalide veuillez réessayer ou créer votre compte :</h5> <br>
         <form method="post" action="router.php?action=loginForm">
           <input type="submit" value="Retour à la page de connexion" class="text-bg-dark rounded">
