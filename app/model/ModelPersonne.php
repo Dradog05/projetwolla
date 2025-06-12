@@ -102,7 +102,7 @@ public static function getAllExaminateurs(){
         return NULL;
     }
 }
-public static function checkLogin($login, $password) {
+public static function checkLoginPsw($login, $password) {
     try{
         $db = Model::getInstance();
         $query = "SELECT * FROM personne WHERE login = :login AND password = :password";
@@ -115,13 +115,53 @@ public static function checkLogin($login, $password) {
         return NULL;
     }
 }
+public static function checkLogin($login) {
+    try{
+        $db = Model::getInstance();
+        $query = "SELECT * FROM personne WHERE login = :login";
+        $statement = $db->prepare($query);
+        $statement->execute(['login' => $login]);
+        $results= $statement->fetch(PDO::FETCH_ASSOC);
+        return $results;
+    } catch (PDOException $ex) { 
+        printf("%s - %s<p/>\n", $ex->getCode(), $ex->getMessage());
+        return NULL;
+    }
+}
 public static function addExaminateur(){
     try{
         $db = Model::getInstance();
         //Compléter la suite pour ajouter un examinateur
-        
     } catch (PDOException $ex) {
-
     }
 }
+public static function genererNouvellePersonne($id,$nom, $prenom, $role_responsable ,$role_examinateur, $role_etudiant, $login, $password) {
+    try{
+        $db= Model::getInstance();
+        $query="insert into personne values ($id,$nom, $prenom, $role_responsable ,$role_examinateur, $role_etudiant, $login, $password)";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        return 1;
+    }catch (PDOException $ex) { 
+        printf("%s - %s<p/>\n", $ex->getCode(), $ex->getMessage());
+        return NULL;
+    }
+}
+public static function genererNouvelId() {
+     try{
+        $db = Model::getInstance();
+        $query = "SELECT MAX(id) AS max_id FROM personne";
+        $statement = $db->prepare($query);
+        $statement ->execute();
+        $row = $statement->fetch();
+        if($row) {$results=$row['max_id'] + 1;
+        return $results;
+        } else{return 1;}
+    }catch (PDOException $ex) { 
+        printf("%s - %s<p/>\n", $ex->getCode(), $ex->getMessage());
+        return NULL;
+    }
+   
+}
+  
 }
