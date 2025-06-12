@@ -1,0 +1,17 @@
+
+html{
+    background-color: black;
+    color:white;
+}
+
+
+.jumbotron {
+  background-color:plum;
+}
+
+.container {
+          margin-top: 80px;
+          background-color: lemonchiffon;
+          width: 90%;
+          color:black;
+      }
