@@ -30,6 +30,7 @@ require ($root . '/app/view/fragment/fragmentProjetHeader.html');
              $element->getResponsable(), $element->getGroupe());
           }
           ?>
+          
       </tbody>
     </table>
   </div>

@@ -1,12 +1,12 @@
 <?php
-
+require_once '../model/ModelProjet.php';
 class ControllerProjet{
     public static function projetReadParResponsable(){
         if (session_status() === PHP_SESSION_NONE) {
         session_start();
     }
-       $results = ModelProjet::getProjetParResponsable($_SESSION['id']);
-       $responsable= htmlspecialchars($_SESSION['utilisateur']);
+       $results = ModelProjet::getProjetParResponsable($_SESSION['login_id']);
+       $responsable= htmlspecialchars($_SESSION['nom'].' '.$_SESSION['prenom']);
        include'config.php';
        $vue = $root.'/app/view/projet/viewProjetParResponsable.php';
        require($vue);
@@ -27,4 +27,3 @@ public static function createdProjet(){
 
 
 }
-?>

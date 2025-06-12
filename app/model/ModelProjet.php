@@ -7,11 +7,13 @@ class ModelProjet {
     private $responsable;
     private $groupe;
 
-    public function __construct($id, $label, $responsable, $groupe) {
+    public function __construct($id=null, $label=null, $responsable=null, $groupe=null) {
+        if(!is_null($id)){
         $this->id = $id;
         $this->label = $label;
         $this->responsable = $responsable;
         $this->groupe = $groupe;
+        }
     }
 
     public function getId() {

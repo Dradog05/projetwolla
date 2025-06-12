@@ -57,7 +57,7 @@
                 $menu='<li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Responsable</a>
                 <ul class="dropdown-menu text-bg-dark">
-                  <li><a class="dropdown-item text-bg-dark" href="router.php?action=">Liste de mes projets</a></li>
+                  <li><a class="dropdown-item text-bg-dark" href="router.php?action=projetReadParResponsable">Liste de mes projets</a></li>
                   <li><a class="dropdown-item text-bg-dark" href="router.php?action=">Ajout d'."'un projet</a></li>
                   <li><hr class=".'"dropdown-divider"></li>
                   <li><a class="dropdown-item text-bg-dark" href="router.php?action=">Liste des examinateurs</a></li> 

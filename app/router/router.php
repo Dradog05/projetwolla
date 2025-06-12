@@ -8,9 +8,9 @@ require('../controller/ControllerAccueil.php');
 require('../controller/ControllerConnexion.php');
 
 #a enlever________________________________________________
-session_start();
-$_SESSION['login_id']=0;
-$_SESSION['login']="?";
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 #___________________________________________________________
 // --- récupération de l'action passée dans l'URL
 $query_string = $_SERVER['QUERY_STRING'];
