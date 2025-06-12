@@ -115,4 +115,13 @@ public static function checkLogin($login, $password) {
         return NULL;
     }
 }
+public static function addExaminateur(){
+    try{
+        $db = Model::getInstance();
+        //Compléter la suite pour ajouter un examinateur
+        
+    } catch (PDOException $ex) {
+
+    }
+}
 }
