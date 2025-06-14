@@ -1,14 +1,14 @@
 
 <!-- ----- début viewAddProjet -->
 <?php
-require ($root . '/app/view/fragment/fragmentCaveHeader.html');
+require ($root . '/app/view/fragment/fragmentProjetHeader.html');
 ?>
 
 <body>
   <div class="container">
     <?php
-    include $root . '/app/view/fragment/fragmentCaveMenu.php';
-    include $root . '/app/view/fragment/fragmentCaveJumbotron.html';
+    include $root . '/app/view/fragment/fragmentProjetMenu.php';
+    include $root . '/app/view/fragment/fragmentProjetJumbotron.html';
     ?>
     <!-- ===================================================== -->
     <?php
@@ -22,13 +22,14 @@ require ($root . '/app/view/fragment/fragmentCaveHeader.html');
      
      echo("</ul>");
     } else {
-     echo ("<h3>Problème d'insertion du Producteur</h3>");
-     echo ("id = " . $_GET['nom']);
+     echo ("<h3>Problème d'insertion du Projet</h3>");
+     echo("<h5> Veuillez réessayer</h5>");
+     
     }
 
     echo("</div>");
     
-    include $root . '/app/view/fragment/fragmentCaveFooter.html';
+    include $root . '/app/view/fragment/fragmentProjetFooter.html';
     ?>
     <!-- ----- fin viewAddProjet -->    
 

@@ -13,7 +13,13 @@ class ControllerPersonne {
    }
    public static function createExaminateur(){
        include 'config.php';
-       $vue = $root.'/app/view/personne/viewFormulaireAjouterExaminateur.php';
+       $vue = $root.'/app/view/Examinateur/viewFormulaireAjouterExaminateur.php';
+       require($vue);
+   }
+   public static function createdExaminateur(){
+       $results = ModelPersonne::addExaminateur(htmlspecialchars($_GET['nom']), htmlspecialchars($_GET['prenom']), htmlspecialchars($_GET['login']), htmlspecialchars($_GET['password']));
+       include'config.php';
+       $vue = $root.'/app/view/Examinateur/viewAjoutExaminateur.php';
        require($vue);
    }
    

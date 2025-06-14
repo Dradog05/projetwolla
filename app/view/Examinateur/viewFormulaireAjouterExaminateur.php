@@ -18,7 +18,10 @@ require ($root . '/app/view/fragment/fragmentProjetHeader.html');
         <input type="hidden" name='action' value='createdExaminateur'>        
         <label class='w-25' for="id">Nom de l'examinateur : </label><input type="text" name='nom' > <br/>                          
         <label class='w-25' for="id">Prenom de l'examinateur : </label><input type="text" name="prenom"> <br/> 
-                  
+        <label class='w-25' for="id">Login de l'examinateur : </label><input type="text" name="login"> <br/>
+        <label class='w-25' for="id"> Mot de Passe de l'examinateur : </label><input type="text" name="password"> <br/> 
+        
+      
       </div>
       <p/>
        <br/> 
@@ -26,7 +29,7 @@ require ($root . '/app/view/fragment/fragmentProjetHeader.html');
     </form>
     <p/>
   </div>
-  <?php include $root . '/app/view/fragment/fragmentCaveFooter.html'; ?>
+  <?php include $root . '/app/view/fragment/fragmentProjetFooter.html'; ?>
 
 <!-- ----- fin viewFormulaireAjouterExaminateur -->
 

@@ -128,12 +128,25 @@ public static function checkLogin($login) {
         return NULL;
     }
 }
-public static function addExaminateur(){
+public static function addExaminateur($nom,$prenom,$login,$password){
     try{
+        $role_responsable=0;
+        $role_etudiant = 0;
+        $role_examinateur = 1;
         $db = Model::getInstance();
-        //Compléter la suite pour ajouter un examinateur
-    } catch (PDOException $ex) {
+        $id = self::genererNouvelId();
+        
+        $query = "INSERT INTO personne (id, nom, prenom, role_responsable, role_examinateur, role_etudiant, login, password)
+                  VALUES (:id, :nom, :prenom, :role_responsable, :role_examinateur, :role_etudiant, :login, :password)";        $statement = $db->prepare($query);
+        $statement->execute(['id'=>$id,'nom'=>$nom,'prenom'=>$prenom,'role_responsable'=>$role_responsable,'role_examinateur'=>$role_examinateur,'role_etudiant'=>$role_etudiant,'login'=>$login,'password'=>$password]);
+        $results = $statement->fetchAll(PDO::FETCH_CLASS, "ModelPersonne");
+        return $id;
+        
+        }catch (PDOException $ex) { 
+        printf("%s - %s<p/>\n", $ex->getCode(), $ex->getMessage());
+        return NULL;
     }
+
 }
 public static function genererNouvellePersonne($id,$nom, $prenom, $role_responsable ,$role_examinateur, $role_etudiant, $login, $password) {
     try{

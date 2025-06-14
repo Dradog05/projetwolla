@@ -60,8 +60,8 @@
                   <li><a class="dropdown-item text-bg-dark" href="router.php?action=projetReadParResponsable">Liste de mes projets</a></li>
                   <li><a class="dropdown-item text-bg-dark" href="router.php?action=createProjet">Ajout d'."'un projet</a></li>
                   <li><hr class=".'"dropdown-divider"></li>
-                  <li><a class="dropdown-item text-bg-dark" href="router.php?action=">Liste des examinateurs</a></li> 
-                  <li><a class="dropdown-item text-bg-dark" href="router.php?action=">Ajout d'."'un examinateur</a></li>
+                  <li><a class="dropdown-item text-bg-dark" href="router.php?action=listeExaminateurs">Liste des examinateurs</a></li> 
+                  <li><a class="dropdown-item text-bg-dark" href="router.php?action=createExaminateur">Ajout d'."'un examinateur</a></li>
                   <li><a class=".'"dropdown-item text-bg-dark" href="router.php?action=">Liste des examinateurs d'."'un projet</a></li>
                   <li><hr class=".'"dropdown-divider"></li>
                   <li><a class="dropdown-item text-bg-dark" href="router.php?action=">Planning d'."'un projet</a></li>

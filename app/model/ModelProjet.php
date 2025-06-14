@@ -67,7 +67,7 @@ class ModelProjet {
             $db = Model::getInstance();
             $query="select max(id) from projet";
             $statement= $db->query($query);
-            $tuple = $statement->fetch();
+            $tuples = $statement->fetch();
             $id=$tuples['0'];
             $id++;
             $query ="insert into projet values(:id,:label,:responsable,:groupe)";

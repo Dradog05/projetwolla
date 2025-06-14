@@ -37,6 +37,8 @@ switch($action):
         ControllerProjet::$action();
         break;
     case"listeExaminateurs":
+    case"createExaminateur":
+    case"createdExaminateur":
         ControllerPersonne::$action();
         break;
 
