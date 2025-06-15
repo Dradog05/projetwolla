@@ -47,6 +47,7 @@ class ModelProjet {
     public function setGroupe($groupe) {
         $this->groupe = $groupe;
     }
+
     
 
     public static function getProjetParResponsable($id){

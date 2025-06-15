@@ -34,11 +34,16 @@ switch($action):
     case "projetReadParResponsable":
     case "createProjet":
     case "createdProjet":
+    case"afficherPlanningParProjet":
+    case"selectionProjet":
+        
         ControllerProjet::$action();
         break;
     case"listeExaminateurs":
     case"createExaminateur":
     case"createdExaminateur":
+    case"listeExaminateurParProjet":
+    case"selectionProjetResponsable":
         ControllerPersonne::$action();
         break;
 
