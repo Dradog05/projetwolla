@@ -1,8 +1,9 @@
 <?php
+
 require_once'Model.php';
 
 class ModelCreneau {
-    
+
     private $id;
     private $projet;
     private $examinateur;
@@ -51,7 +52,7 @@ class ModelCreneau {
     public function setCreneau($creneau) {
         $this->creneau = $creneau;
     }
-    
+
     public static function getExaminateurParProjet($id_projet) {
         try {
             $db = Model::getInstance();
@@ -68,14 +69,28 @@ class ModelCreneau {
             return NULL;
         }
     }
-    public static function getPlanningParProjet($id_projet){
-        try{
+
+    public static function getPlanningParProjet($id_projet) {
+        try {
             $db = Model::getInstance();
             $query = "select * from infordv where projet_id = :id_projet order by creneau";
             $statement = $db->prepare($query);
-            $statement->execute(['id_projet'=>$id_projet]);
-            return $statement->fetchAll(PDO::FETCH_ASSOC);      
-            
+            $statement->execute(['id_projet' => $id_projet]);
+            return $statement->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $ex) {
+            printf("%s - %s<p/>\n", $ex->getCode(), $ex->getMessage());
+            return NULL;
+        }
+    }
+/*Pas opérationnel*/
+    public static function getListeCreneauProjetExaminateur($id_examinateur) {
+        try {
+            $db = Model::getInstance();
+            $query = "select * from creneau where examinateur = :id_examinateur";
+            $statement = $db->prepare($query);
+            $statement->execute(['id_examinateur' => $id_examinateur]);
+            $results = $statement->fetchAll(PDO::FETCH_CLASS,'ModelCreneau');
+            $projet = $results['projet'];
         } catch (PDOException $ex) {
             printf("%s - %s<p/>\n", $ex->getCode(), $ex->getMessage());
             return NULL;

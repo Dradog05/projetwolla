@@ -46,6 +46,19 @@ class ControllerPersonne {
         $vue = $root . '/app/view/Examinateur/viewListeExaminateurParProjet.php';
         require($vue);
     }
+    public static function listeProjetExaminateur(){
+        $results = ModelPersonne::getListeProjetExaminateur($_SESSION['login_id']);
+        include 'config.php';
+        $vue = $root. '/app/view/Examinateur/viewListeProjetExaminateur.php';
+        require($vue);
+    }
+    
+    public static function listeCreneauExaminateur(){
+        $results = ModelCreneau::getListeCreneauProjetExaminateur($_SESSION['login_id']);
+        include 'config.php';
+        $vue = $root.'/app/view/Examinateur/viewListeCreneauProjetExaminateur.php';
+        require($vue);
+    }
    
 }
 ?>

@@ -44,6 +44,8 @@ switch($action):
     case"createdExaminateur":
     case"listeExaminateurParProjet":
     case"selectionProjetResponsable":
+    case"listeProjetExaminateur":
+    case"listeCreneauExaminateur":
         ControllerPersonne::$action();
         break;
 

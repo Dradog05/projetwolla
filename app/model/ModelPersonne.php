@@ -1,5 +1,6 @@
 <?php
 require_once'Model.php';
+require_once'ModelProjet.php';
 class ModelPersonne{
 
     public $login;
@@ -176,5 +177,47 @@ public static function genererNouvelId() {
     }
    
 }
+
+public static function getListeProjetExaminateur($examinateur_id){
+    try{
+        $db= Model::getInstance();
+        $query="SELECT DISTINCT p.*
+FROM projet p
+JOIN creneau c ON p.id = c.projet
+WHERE c.examinateur = :idExaminateur";
+        $statement = $db->prepare($query);
+        $statement->execute(['idExaminateur'=>$examinateur_id]);
+        $results = $statement->fetchAll(PDO::FETCH_CLASS, "ModelProjet");
+        return $results;
+
+                 
+    } catch (PDOException $ex) { 
+        printf("%s - %s<p/>\n", $ex->getCode(), $ex->getMessage());
+        return NULL;
+    }
+    
+}
+
+//Pour la viewListeProjetExaminateur il faut le nom et prénom du responsable or on nous retourne que l'ID donc j'utilise cette focntion
+public static function selectById($id) {
+    try {
+        $db = Model::getInstance();
+        $query = "SELECT * FROM personne WHERE id = :id";
+        $statement = $db->prepare($query);
+        $statement->execute(['id' => $id]);
+
+        // On définit le mode de récupération
+        $statement->setFetchMode(PDO::FETCH_CLASS, 'ModelPersonne');
+
+        // On récupère un seul résultat (objet)
+        $result = $statement->fetch();
+        return $result;
+
+    } catch (PDOException $ex) { 
+        printf("%s - %s<p/>\n", $ex->getCode(), $ex->getMessage());
+        return NULL;
+    }
+}
+
   
 }
