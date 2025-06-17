@@ -83,17 +83,26 @@ class ModelCreneau {
         }
     }
 /*Pas opérationnel*/
-    public static function getListeCreneauProjetExaminateur($id_examinateur) {
-        try {
-            $db = Model::getInstance();
-            $query = "select * from creneau where examinateur = :id_examinateur";
-            $statement = $db->prepare($query);
-            $statement->execute(['id_examinateur' => $id_examinateur]);
-            $results = $statement->fetchAll(PDO::FETCH_CLASS,'ModelCreneau');
-            $projet = $results['projet'];
-        } catch (PDOException $ex) {
-            printf("%s - %s<p/>\n", $ex->getCode(), $ex->getMessage());
-            return NULL;
-        }
+ public static function getListeCreneauProjetExaminateur($id_examinateur) {
+    try {
+        $db = Model::getInstance();
+        
+        $query = "SELECT c.*, p.label as projet_label, 
+                 CONCAT(resp.prenom, ' ', resp.nom) as responsable_nom
+                 FROM creneau c
+                 JOIN projet p ON c.projet = p.id
+                 JOIN personne resp ON p.responsable = resp.id
+                 WHERE c.examinateur = :id_examinateur
+                 ORDER BY c.creneau DESC, p.label";
+                 
+        $statement = $db->prepare($query);
+        $statement->execute(['id_examinateur' => $id_examinateur]);
+        $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $results;
+        
+    } catch (PDOException $ex) {
+        printf("%s - %s<p/>\n", $ex->getCode(), $ex->getMessage());
+        return NULL;
     }
+}
 }
