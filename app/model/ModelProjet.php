@@ -47,6 +47,19 @@ class ModelProjet {
     public function setGroupe($groupe) {
         $this->groupe = $groupe;
     }
+    public static function getAllProjet(){
+        try{
+            $db = Model::getInstance();
+            $query = "select * from projet";
+            $statement = $db->prepare($query);
+            $statement>execute($query);
+            $results = $statement->fetchAll(PDO::FETCH_CLASS,'ModelProjet');
+            return $results;
+        }catch (PDOException $ex) {
+            printf("%s - %s<p/>\n", $ex->getCode(), $ex->getMessage());
+            return NULL;
+        }
+    }
 
     
 

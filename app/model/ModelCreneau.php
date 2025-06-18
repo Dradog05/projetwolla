@@ -104,6 +104,20 @@ class ModelCreneau {
             return NULL;
         }
     }
+    
+    public static function addCreneauToProjet($projet_id,$date,$time,$examinateur_id){
+        $creneau = $date.$time;
+        
+        try{
+            $db = Model::getInstance();
+            $query = "insert into creneau (projet,examinateur,creneau) values (:projet,:examinateur,:creneau";
+            $statement = $db->prepare($query);
+            $statement->execute(['projet'=> $projet_id,'examinateur'=>$examinateur_id,'creneau'=>$creneau]);s
+            
+        } catch (Exception $ex) {
+
+        }
+    }
 
     public static function getListeCreneauParProjet($id_projet) {
         try {
