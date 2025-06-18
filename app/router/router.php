@@ -50,6 +50,12 @@ switch($action):
     case"listeCreneauProjetParticulierExaminateur";
         ControllerPersonne::$action();
         break;
+    case"createCreneau":
+    case"createdCreneau":
+    case"createListeCreneau":
+    case"createdListeCreneau":
+        ControllerCreneau::$action();
+        break;
 
     default:
         ControllerAccueil::afficherAccueil();

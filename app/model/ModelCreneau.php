@@ -104,18 +104,23 @@ class ModelCreneau {
             return NULL;
         }
     }
-    
-    public static function addCreneauToProjet($projet_id,$date,$time,$examinateur_id){
-        $creneau = $date.$time;
-        
-        try{
-            $db = Model::getInstance();
-            $query = "insert into creneau (projet,examinateur,creneau) values (:projet,:examinateur,:creneau";
-            $statement = $db->prepare($query);
-            $statement->execute(['projet'=> $projet_id,'examinateur'=>$examinateur_id,'creneau'=>$creneau]);s
-            
-        } catch (Exception $ex) {
 
+    public static function addCreneauToProjet($projet_id, $date, $time, $examinateur_id) {
+        $creneau = $date . " " . $time;
+        try {
+            $db = Model::getInstance();
+            $query = "SELECT MAX(id) FROM creneau";
+            $statement = $db->query($query);
+            $tuple = $statement->fetch();
+            $id = $tuple[0] + 1;
+            $query = "insert into creneau (id,projet,examinateur,creneau) values (:id,:projet,:examinateur,:creneau)";
+            $statement = $db->prepare($query);
+            $statement->execute(['id' => $id, 'projet' => $projet_id, 'examinateur' => $examinateur_id, 'creneau' => $creneau]);
+            $results = ['id'=>$id,'projet'=>$projet_id,'examinateur'=>$examinateur_id,'creneau'=>$creneau];
+            return $results;
+        } catch (PDOException $ex) {
+            printf("%s - %s<p/>\n", $ex->getCode(), $ex->getMessage());
+            return NULL;
         }
     }
 
@@ -127,12 +132,41 @@ class ModelCreneau {
                         FROM infocreneaux
                         WHERE examinateur_id = :examinateur_id AND projet_id = :projet_id";
             $statement = $db->prepare($query);
-            $statement->execute(['examinateur_id'=>$_SESSION['login_id'],'projet_id'=>$id_projet]);
+            $statement->execute(['examinateur_id' => $_SESSION['login_id'], 'projet_id' => $id_projet]);
             $results = $statement->fetchAll(PDO::FETCH_ASSOC);
             return $results;
         } catch (PDOException $ex) {
             printf("%s - %s<p/>\n", $ex->getCode(), $ex->getMessage());
             return NULL;
         }
+    }
+    
+    /* A Continué*/
+    public static function addListeCreneauToProjet($projet_id,$date,$time,$examinateur_id,$nombre){
+        try{
+            $db = Model::getInstance();
+            $results=[];
+            $heure = new DateTime($date . ' ' . $time);
+            for ($i=0;$i<=$nombre;$i++){
+                $creneau = $heure->format('Y-m-d H:i');
+                $query = "SELECT MAX(id) FROM creneau";
+                $statement = $db->query($query);
+                $tuple = $statement->fetch();
+                $id = $tuple[0] + 1;
+                $query = "insert into creneau(id,projet,examinateur,creneau) values (:id,:projet,:examinateur,:creneau)";
+                $statement = $db->prepare($query);
+                $statement->execute(['id' => $id, 'projet' => $projet_id, 'examinateur' => $examinateur_id, 'creneau' => $creneau]);
+                $results[] = ['id'=>$id,'projet'=>$projet_id,'examinateur'=>$examinateur_id,'creneau'=>$creneau];
+                
+                $heure->modify('+1 hour');
+                
+            }
+            return $results;
+            
+        }  catch (PDOException $ex) {
+            printf("%s - %s<p/>\n", $ex->getCode(), $ex->getMessage());
+            return NULL;
+        }
+        
     }
 }

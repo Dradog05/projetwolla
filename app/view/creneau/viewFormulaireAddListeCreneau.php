@@ -1,5 +1,5 @@
 
-<!-- ----- début viewFormulaireAddCreneau -->
+<!-- ----- début viewFormulaireAddListeCreneau -->
  
 <?php 
 require ($root . '/app/view/fragment/fragmentProjetHeader.html');
@@ -25,18 +25,19 @@ require ($root . '/app/view/fragment/fragmentProjetHeader.html');
                 </select> <br/>                          
         <label class='w-25' for="id">Quel jour ? </label><input type="date" name="date"> <br/> 
         <label class='w-25' for="id">Quelle heure ? </label><input type="time" name="time"> <br/>
+        <label class='w-25' for="id">Nombre de créneaux consécutifs ? </label><input type="number" min="1" max="10" name="nombre"> <br/>
         
       
       </div>
       <p/>
        <br/> 
-      <button class="btn btn-primary" type="submit">Go</button>
+      <button class="btn btn-primary" type="submit">Ajouter</button>
     </form>
     <p/>
   </div>
   <?php include $root . '/app/view/fragment/fragmentProjetFooter.html'; ?>
 
-<!-- ----- fin viewFormulaireAddCreneau -->
+<!-- ----- fin viewFormulaireAddListeCreneau -->
 
 
 

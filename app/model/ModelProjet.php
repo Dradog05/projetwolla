@@ -52,7 +52,7 @@ class ModelProjet {
             $db = Model::getInstance();
             $query = "select * from projet";
             $statement = $db->prepare($query);
-            $statement>execute($query);
+            $statement->execute();
             $results = $statement->fetchAll(PDO::FETCH_CLASS,'ModelProjet');
             return $results;
         }catch (PDOException $ex) {
