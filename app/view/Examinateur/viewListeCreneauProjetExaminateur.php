@@ -11,7 +11,7 @@ require ($root . '/app/view/fragment/fragmentProjetHeader.html');
         include $root . '/app/view/fragment/fragmentProjetMenu.php';
         include $root . '/app/view/fragment/fragmentProjetJumbotron.html';
         ?>
-        <h5>Liste des différents créneaux</h5>
+        <h5>Liste de mes différents créneaux</h5>
         <table class = "table table-striped table-bordered">
             <thead>
                 <tr>
@@ -26,7 +26,7 @@ require ($root . '/app/view/fragment/fragmentProjetHeader.html');
                 if (isset($results) && is_array($results) && count($results) > 0) {
                     foreach ($results as $element) {
                         printf("<tr><td>%s</td><td>%s</td></tr>",
-                                htmlspecialchars($element['label']),
+                                htmlspecialchars($element['projet_label']),
                                 htmlspecialchars($element['creneau'])
                         );
                     }
