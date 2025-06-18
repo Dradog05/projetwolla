@@ -59,6 +59,26 @@ class ControllerPersonne {
         $vue = $root.'/app/view/Examinateur/viewListeCreneauProjetExaminateur.php';
         require($vue);
     }
+    public static function selectionProjetExaminateur(){
+        $results = ModelPersonne::getListeProjetExaminateur($_SESSION['login_id']);
+        include 'config.php';
+        if ($results == NULL) {
+            $vue = $root . '/app/view/personne/viewFormulaireSelectionProjetVide.php';
+        } else {
+
+            $vue = $root . '/app/view/Examinateur/viewFormulaireSelectionProjetExaminateur.php';
+        }
+        require($vue);
+    }
+    public static function listeCreneauProjetParticulierExaminateur(){
+        
+        $results = ModelCreneau::getListeCreneauParProjet($_GET['projet']);
+        $label = ModelProjet::selectById($_GET['projet']);
+        include 'config.php';
+        $vue = $root. '/app/view/Examinateur/viewListeCreneauProjetParticulierExaminateur.php';
+        require($vue);
+        
+    }
    
 }
 ?>

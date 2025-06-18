@@ -47,7 +47,7 @@
                 <ul class="dropdown-menu text-bg-dark">
                   <li><a class="dropdown-item text-bg-dark" href="router.php?action=listeProjetExaminateur">Liste des projets</a></li>
                   <li><a class="dropdown-item text-bg-dark" href="router.php?action=listeCreneauExaminateur">Liste complète de mes crénaux</a></li>
-                  <li><a class="dropdown-item text-bg-dark" href="router.php?action=">Liste de mes crénaux pour un projet</a></li>
+                  <li><a class="dropdown-item text-bg-dark" href="router.php?action=selectionProjetExaminateur">Liste de mes crénaux pour un projet</a></li>
                   <li><a class="dropdown-item text-bg-dark" href="router.php?action=">Ajouter un crénau à un projet</a></li>
                   <li><a class="dropdown-item text-bg-dark" href="router.php?action=">Ajouter des crénaux consécutifs</a></li>
                 </ul>

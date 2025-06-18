@@ -10,7 +10,15 @@ require ($root . '/app/view/fragment/fragmentProjetHeader.html');
       include $root . '/app/view/fragment/fragmentProjetMenu.php';
       include $root . '/app/view/fragment/fragmentProjetJumbotron.html';
       ?>
-      <h5>Ce responsable n'a pas de Projet</h5>
+      
+          <?php if($results['role_examinateur']==1){
+              printf("<h5> Cet Examinateur n'a pas de projet assigné");
+          }
+          else if($results['role_responsable']==1 and $results['role_examinateur']==1){
+              printf("<h5> Ce responsable n'a pas de projet");
+          }
+          ?>
+          
       </br>
    
   </div>

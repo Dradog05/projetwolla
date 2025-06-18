@@ -81,5 +81,24 @@ class ModelProjet {
             return NULL;
         }
     }
+    public static function selectById($id) {
+    try {
+        $db = Model::getInstance();
+        $query = "SELECT * FROM projet WHERE id = :id";
+        $statement = $db->prepare($query);
+        $statement->execute(['id' => $id]);
+
+        // On définit le mode de récupération
+        $statement->setFetchMode(PDO::FETCH_CLASS, 'ModelProjet');
+
+        // On récupère un seul résultat (objet)
+        $result = $statement->fetch();
+        return $result;
+
+    } catch (PDOException $ex) { 
+        printf("%s - %s<p/>\n", $ex->getCode(), $ex->getMessage());
+        return NULL;
+    }
+}
     
 }

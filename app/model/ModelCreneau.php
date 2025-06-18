@@ -82,27 +82,43 @@ class ModelCreneau {
             return NULL;
         }
     }
-/*Pas opérationnel*/
- public static function getListeCreneauProjetExaminateur($id_examinateur) {
-    try {
-        $db = Model::getInstance();
-        
-        $query = "SELECT c.*, p.label as projet_label, 
+
+    public static function getListeCreneauProjetExaminateur($id_examinateur) {
+        try {
+            $db = Model::getInstance();
+
+            $query = "SELECT c.*, p.label as projet_label, 
                  CONCAT(resp.prenom, ' ', resp.nom) as responsable_nom
                  FROM creneau c
                  JOIN projet p ON c.projet = p.id
                  JOIN personne resp ON p.responsable = resp.id
                  WHERE c.examinateur = :id_examinateur
                  ORDER BY c.creneau DESC, p.label";
-                 
-        $statement = $db->prepare($query);
-        $statement->execute(['id_examinateur' => $id_examinateur]);
-        $results = $statement->fetchAll(PDO::FETCH_ASSOC);
-        return $results;
-        
-    } catch (PDOException $ex) {
-        printf("%s - %s<p/>\n", $ex->getCode(), $ex->getMessage());
-        return NULL;
+
+            $statement = $db->prepare($query);
+            $statement->execute(['id_examinateur' => $id_examinateur]);
+            $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+            return $results;
+        } catch (PDOException $ex) {
+            printf("%s - %s<p/>\n", $ex->getCode(), $ex->getMessage());
+            return NULL;
+        }
     }
-}
+
+    public static function getListeCreneauParProjet($id_projet) {
+        try {
+
+            $db = Model::getInstance();
+            $query = "SELECT * 
+                        FROM infocreneaux
+                        WHERE examinateur_id = :examinateur_id AND projet_id = :projet_id";
+            $statement = $db->prepare($query);
+            $statement->execute(['examinateur_id'=>$_SESSION['login_id'],'projet_id'=>$id_projet]);
+            $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+            return $results;
+        } catch (PDOException $ex) {
+            printf("%s - %s<p/>\n", $ex->getCode(), $ex->getMessage());
+            return NULL;
+        }
+    }
 }
