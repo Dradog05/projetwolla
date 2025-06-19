@@ -147,7 +147,7 @@ class ModelCreneau {
             $db = Model::getInstance();
             $results=[];
             $heure = new DateTime($date . ' ' . $time);
-            for ($i=0;$i<=$nombre;$i++){
+            for ($i=0;$i<$nombre;$i++){
                 $creneau = $heure->format('Y-m-d H:i');
                 $query = "SELECT MAX(id) FROM creneau";
                 $statement = $db->query($query);

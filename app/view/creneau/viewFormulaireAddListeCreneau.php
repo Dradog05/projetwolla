@@ -15,7 +15,7 @@ require ($root . '/app/view/fragment/fragmentProjetHeader.html');
 
     <form role="form" method='get' action='router.php'>
       <div class="form-group">
-        <input type="hidden" name='action' value='createdCreneau'>        
+        <input type="hidden" name='action' value='createdListeCreneau'>        
         <label class='w-25' for="id">Sélectionnez un projet </label><select name='projet'>
                     <?php foreach ($results as $projet): ?>
                         <option value="<?= htmlspecialchars($projet->getId()) ?>">

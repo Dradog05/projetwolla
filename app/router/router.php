@@ -56,6 +56,9 @@ switch($action):
     case"createdListeCreneau":
         ControllerCreneau::$action();
         break;
+    case"listeRdvEtudiant":
+        ControllerRendezVous::$action();
+        break;
 
     default:
         ControllerAccueil::afficherAccueil();

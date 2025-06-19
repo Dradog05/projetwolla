@@ -79,7 +79,7 @@ class ControllerPersonne {
         require($vue);
         
     }
-   
+    
 }
 ?>
 
