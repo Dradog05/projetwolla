@@ -69,6 +69,55 @@ class ModelRendezVous {
             return NULL;
         }
     }
+    
+public static function getCreneauxDisponibleParProjet($projet_id) {
+    try {
+        $db = Model::getInstance();
+        $query = "
+            SELECT 
+                c.id, 
+                c.creneau, 
+                p.label AS projet_label, 
+                pers.nom AS examinateur_nom, 
+                pers.prenom AS examinateur_prenom
+            FROM creneau c
+            JOIN projet p ON c.projet = p.id
+            JOIN personne pers ON c.examinateur = pers.id
+            WHERE c.projet = :projet_id
+              AND c.id NOT IN (SELECT creneau FROM rdv)
+            ORDER BY c.creneau
+        ";
+        $statement = $db->prepare($query);
+        $statement->execute(['projet_id' => $projet_id]);
+        $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $results;
+    } catch (PDOException $e) {
+        printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+        return [];
+    }
+}
+public static function ajouterRdv($creneau_id, $etudiant_id) {
+    try {
+        $db = Model::getInstance();
+         $query="select max(id) from rdv";
+            $statement= $db->query($query);
+            $tuples = $statement->fetch();
+            $id=$tuples['0'];
+            $id++;
+        $query = "INSERT INTO rdv (creneau, etudiant) VALUES (:creneau_id, :etudiant_id)";
+        $statement = $db->prepare($query);
+        $statement->execute([
+            'creneau_id' => $creneau_id,
+            'etudiant_id' => $etudiant_id
+        ]);
+        return $id;
+    } catch (PDOException $e) {
+        printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+        return [];
+    }
+}
+
+
 }
 ?>
 

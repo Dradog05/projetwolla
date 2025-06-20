@@ -57,6 +57,9 @@ switch($action):
         ControllerCreneau::$action();
         break;
     case"listeRdvEtudiant":
+    case"choisirProjetEtudiant":
+    case"prendreRdvEtudiant":
+    case"prendreRdvEtudiantVerification":
         ControllerRendezVous::$action();
         break;
 
