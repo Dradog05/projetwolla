@@ -19,10 +19,10 @@ require ($root . 'app/view/fragment/fragmentProjetHeader.html');
           <input type="text" name="login" required><br>
           <label for="password">Mot de passe:</label>
           <input type="password" name="password" required><br>
-          <p>Rôles du personnel :</p>
-          <label><input type="checkbox" for="role_responsable" name="role_responsable" value="0"> Responsable</label><br>
-          <label><input type="checkbox" for="role_examinateur" name="role_examinateur" value="0"> Examinateur</label>
-          <label><input type="checkbox" name="role_etudiant" value="0">Etudiant</label><br>
+          <p>Rôles de la personne :</p>
+          <label><input type="checkbox" id="role_responsable" name="role_responsable" value="1"> Responsable</label><br>
+          <label><input type="checkbox" id="role_examinateur" name="role_examinateur" value="1"> Examinateur</label><br>
+          <label><input type="checkbox" id="role_etudiant" name="role_etudiant" value="1"> Etudiant</label><br>
           <input type="submit" value="Inscription" class="rouded text-bg-dark">
         </form><br>
     </div>

@@ -40,22 +40,47 @@ class ControllerConnexion {
             
             $_SESSION['nom'] = $_POST['nom'];
             $_SESSION['prenom'] = $_POST['prenom'];
-            if($_POST['role_responsable']==1){$role_responsable=true;}else{$role_responsable=false;}
+            if (isset($_POST['role_responsable']) && $_POST['role_responsable'] == '1') {
+                $role_responsable = 1;
+            } else {
+                $role_responsable = 0;
+            }
+
+            if (isset($_POST['role_examinateur']) && $_POST['role_examinateur'] == '1') {
+                $role_examinateur = 1;
+            } else {
+                $role_examinateur = 0;
+            }
+
+            if (isset($_POST['role_etudiant']) && $_POST['role_etudiant'] == '1') {
+                $role_etudiant = 1;
+            } else {
+                $role_etudiant = 0;
+            }
+            if ($role_etudiant==1) {
+            $role_responsable = 0;
+            $role_examinateur = 0;
+            }        
             $_SESSION['role_responsable'] = $role_responsable;
-            if($_POST['role_examinateur']==1){$role_examinateur=true;}else{$role_examinateur=false;}
-            $_SESSION['role_responsable'] = $role_examinateur;
-            if($_POST['role_etudiant']==1){$role_etudiant=true;$role_examinateur=false;$role_responsable=false;}else{$role_etudiant=false;}
-            $_SESSION['role_responsable'] = $role_etudiant;
+            $_SESSION['role_examinateur'] = $role_examinateur;
+            $_SESSION['role_etudiant'] = $role_etudiant;
             $id= ModelPersonne::genererNouvelId();
             $result=ModelPersonne::genererNouvellePersonne($id,$_POST['nom'],$_POST['prenom'],$role_responsable,$role_examinateur,$role_etudiant,$login,$password);
-            if($result==1){
+                if ($result){
                 include 'config.php';
 
                 $vue = $root . 'app/view/Connexion/viewCreateSuccess.php';
                 if (DEBUG)
                 echo ("ControllerConnexion : Inscription : vue = $vue");
                 require ($vue);
-                }
+                } else{
+                include 'config.php';
+                $vue = $root . 'app/view/Connexion/viewCreateError.php';
+                if (DEBUG)
+                echo ("ControllerConnexion: Inscription : vue = $vue");
+                require ($vue);
+            }
+                
             }else{
                 include 'config.php';
                 $vue = $root . 'app/view/Connexion/viewCreateError.php';
