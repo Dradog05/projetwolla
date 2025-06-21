@@ -104,9 +104,10 @@ public static function ajouterRdv($creneau_id, $etudiant_id) {
             $tuples = $statement->fetch();
             $id=$tuples['0'];
             $id++;
-        $query = "INSERT INTO rdv (creneau, etudiant) VALUES (:creneau_id, :etudiant_id)";
+        $query = "INSERT INTO rdv (id,creneau, etudiant) VALUES (:id, :creneau_id, :etudiant_id)";
         $statement = $db->prepare($query);
         $statement->execute([
+            'id'=>$id,
             'creneau_id' => $creneau_id,
             'etudiant_id' => $etudiant_id
         ]);

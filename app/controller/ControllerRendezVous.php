@@ -1,7 +1,7 @@
 <?php
 require_once '../model/ModelRendezVous.php';
 require_once '../model/ModelProjet.php';
-
+require_once '../model/ModelPersonne.php';
 class ControllerRendezVous{
     
     public static function listeRdvEtudiant(){
@@ -17,7 +17,7 @@ class ControllerRendezVous{
         require($vue);
     }
     public static function prendreRdvEtudiant(){
-    $projet_id = $_GET['id']; 
+    $projet_id = $_GET['projet']; 
     $creneaux = ModelRendezVous::getCreneauxDisponibleParProjet($projet_id); 
     include 'config.php';
     $vue = $root . '/app/view/rendezVous/viewFormulaireChoisirCreneauEtudiant.php';
@@ -25,12 +25,12 @@ class ControllerRendezVous{
     }
    public static function prendreRdvEtudiantVerification(){
        $creneau_id = $_GET['creneau_id'];
-    $etudiant_id = $_SESSION['login_id'];
+       $etudiant_id = $_SESSION['login_id'];
     $results = ModelRendezVous::ajouterRdv($creneau_id, $etudiant_id);
+    $etudiant = ModelPersonne::selectById($etudiant_id);
     
-    // Redirection ou confirmation
     include 'config.php';
-    $vue = $root . '/app/view/rendezVous/viewRdvConfirmation.php';
+    $vue = $root . '/app/view/rendezVous/viewPrendreRdvEtudiantVerification.php';
     require($vue);
    }
     

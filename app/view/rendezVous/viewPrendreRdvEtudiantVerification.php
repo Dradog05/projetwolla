@@ -16,7 +16,7 @@ require ($root . '/app/view/fragment/fragmentProjetHeader.html');
             echo ("<h3> Le RDV a bien été pris :  </h3>");
             echo("<ul>");
             echo ("<li>id du créneau = " . htmlspecialchars($creneau_id) . "</li>");
-            echo ("<li>Etudiant = " . htmlspecialchars($_SESSION['login_id']) . "</li>");
+            echo ("<li>Etudiant = " . htmlspecialchars($etudiant->getNom()) ." ".htmlspecialchars($etudiant->getPrenom()) ."</li>");
             echo("</ul>");
         } else {
             echo ("<h3>Problème d'ajout du RDV</h3>");
