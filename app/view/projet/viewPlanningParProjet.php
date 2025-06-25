@@ -28,11 +28,13 @@ require($root . '/app/view/fragment/fragmentProjetHeader.html');
           <?php
                        
           foreach ($results as $element) {
-           printf("<tr><td>%s</td><td>%s %s</td><td>%s</td><td>%s %s </td></tr>", htmlspecialchars($element['projet_label']),
-             htmlspecialchars($element['examinateur_prenom']),htmlspecialchars($element['examinateur_nom']),
-                   htmlspecialchars($element['creneau']),
-            htmlspecialchars($element['etudiant_prenom']),
-            htmlspecialchars($element['etudiant_nom']));
+           printf("<tr><td>%s</td><td>%s %s</td><td>%s</td><td>%s</td></tr>", 
+                htmlspecialchars($element['projet_label']),
+                htmlspecialchars($element['examinateur_prenom']),
+                htmlspecialchars($element['examinateur_nom']),
+                htmlspecialchars($element['creneau']),
+                htmlspecialchars($element['etudiant']) 
+             );
           }
          
           ?>

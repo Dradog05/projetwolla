@@ -71,18 +71,35 @@ class ModelCreneau {
     }
 
     public static function getPlanningParProjet($id_projet) {
-        try {
-            $db = Model::getInstance();
-            $query = "select * from infordv where projet_id = :id_projet order by creneau";
-            $statement = $db->prepare($query);
-            $statement->execute(['id_projet' => $id_projet]);
-            return $statement->fetchAll(PDO::FETCH_ASSOC);
+    try {
+        $db = Model::getInstance();
+        $query = "SELECT * FROM infordv WHERE projet_id = :id_projet ORDER BY creneau";
+        $statement = $db->prepare($query);
+        $statement->execute(['id_projet' => $id_projet]);
+        $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $grouped = [];
+        foreach ($results as $row) {
+            $key = $row['creneau'] . '|' . $row['examinateur_prenom'] . '|' . $row['examinateur_nom'];
+            if (!isset($grouped[$key])) {
+                $grouped[$key] = $row;
+                $grouped[$key]['etudiants'] = [ $row['etudiant_prenom'] . ' ' . $row['etudiant_nom'] ];
+            } else {
+                $studentFullName = $row['etudiant_prenom'] . ' ' . $row['etudiant_nom'];
+                if (!in_array($studentFullName, $grouped[$key]['etudiants'])) {
+                    $grouped[$key]['etudiants'][] = $studentFullName;
+                }
+            }
+        }
+        foreach ($grouped as &$group) {
+            $group['etudiant'] = implode(', ', $group['etudiants']);
+            unset($group['etudiants']);
+        }
+        return array_values($grouped);
         } catch (PDOException $ex) {
             printf("%s - %s<p/>\n", $ex->getCode(), $ex->getMessage());
             return NULL;
         }
     }
-
     public static function getListeCreneauProjetExaminateur($id_examinateur) {
         try {
             $db = Model::getInstance();
