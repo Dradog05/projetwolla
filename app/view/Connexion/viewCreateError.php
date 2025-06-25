@@ -1,13 +1,18 @@
-<?php include($root . 'app/view/fragment/fragmentProjetHeader.html');?>
+<?php
+require($root . '/app/view/fragment/fragmentProjetHeader.html');
+?>
+
 <body>
   <div class="container rounded">
-    <?php
-    include($root . 'app/view/fragment/fragmentProjetMenu.php');
+    <?php include $root . '/app/view/fragment/fragmentProjetMenu.php'; ?>
+
+    <?php include $root . '/app/view/fragment/fragmentProjetJumbotron.html'; ?>
+
+
+    <hr>
+    <h5>Il y a une erreur dans la création de votre Personne : </h5><br>";
+    <h5>Peut-être que la personne que vous tentez de créer n'exhiste pas</h5>";
     
-    include($root . 'app/view/fragment/fragmentProjetJumbotron.html');
-    echo"<hr><h5>Il y a une erreur dans la création de votre Personne : </h5><br>";
-        "<h5>Peut-être que la personne que vous tentez de créer n'exhiste pas</h5>";
-    ?>
       
   </div>   
   

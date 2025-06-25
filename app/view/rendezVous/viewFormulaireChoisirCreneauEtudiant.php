@@ -22,20 +22,20 @@ require ($root . '/app/view/fragment/fragmentProjetHeader.html');
         <div class="form-group">
           <input type="hidden" name='action' value='prendreRdvEtudiantVerification'>
           <select name='creneau_id'>
-            <?php foreach ($creneaux as $creneau_dispo): ?>
-              <option value="<?= htmlspecialchars($creneau_dispo['id']) ?>">
+            <?php foreach ($creneaux as $creneau_dispo): 
+             echo"<option value='" .htmlspecialchars($creneau_dispo['id'])."'";?>
                 <?= htmlspecialchars($creneau_dispo['creneau']) ?> — <?= htmlspecialchars($creneau_dispo['examinateur_nom'] . " " . $creneau_dispo['examinateur_prenom']) ?>
-              </option>
-            <?php endforeach; ?>
-          </select>
-        </div>
+             <?php echo "</option>";
+             endforeach;
+         echo " </select>
+       </div>
         <p/>
         <br/> 
-        <button class="btn btn-primary" type="submit">Go</button>
+        <button class='btn btn-dark' type='submit'>Soumettre</button>
       </form>
-    <?php } ?>
+    "; } ?>
 
-    <p/>
+      <p/><br>
   </div>
   <?php include $root . '/app/view/fragment/fragmentProjetFooter.html'; ?>
 

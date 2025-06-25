@@ -1,16 +1,17 @@
 
 <!-- ----- début viewPrendreRdvEtudiantVerification -->
 <?php
-require ($root . '/app/view/fragment/fragmentProjetHeader.html');
+require($root . '/app/view/fragment/fragmentProjetHeader.html');
 ?>
 
 <body>
-    <div class="container">
-        <?php
-        include $root . '/app/view/fragment/fragmentProjetMenu.php';
-        include $root . '/app/view/fragment/fragmentProjetJumbotron.html';
-        ?>
-        <!-- ===================================================== -->
+  <div class="container rounded">
+    <?php include $root . '/app/view/fragment/fragmentProjetMenu.php'; ?>
+
+    <?php include $root . '/app/view/fragment/fragmentProjetJumbotron.html'; ?>
+
+
+    <hr>
         <?php
         if ($results) {
             echo ("<h3> Le RDV a bien été pris :  </h3>");

@@ -23,7 +23,7 @@ require ($root . 'app/view/fragment/fragmentProjetHeader.html');
           <label><input type="checkbox" id="role_responsable" name="role_responsable" value="1"> Responsable</label><br>
           <label><input type="checkbox" id="role_examinateur" name="role_examinateur" value="1"> Examinateur</label><br>
           <label><input type="checkbox" id="role_etudiant" name="role_etudiant" value="1"> Etudiant</label><br>
-          <input type="submit" value="Inscription" class="rouded text-bg-dark">
+          <input type="submit" value="S'inscrire" class="rouded text-bg-dark">
         </form><br>
     </div>
 <?php include $root . 'app/view/fragment/fragmentProjetFooter.html'; ?>

@@ -2,15 +2,17 @@
 <!-- ----- début viewFormulaireChoisirProjetEtudiant -->
 
 <?php
-require ($root . '/app/view/fragment/fragmentProjetHeader.html');
+require($root . '/app/view/fragment/fragmentProjetHeader.html');
 ?>
 
 <body>
-    <div class="container">
-        <?php
-        include $root . '/app/view/fragment/fragmentProjetMenu.php';
-        include $root . '/app/view/fragment/fragmentProjetJumbotron.html';
-        ?> 
+  <div class="container rounded">
+    <?php include $root . '/app/view/fragment/fragmentProjetMenu.php'; ?>
+
+    <?php include $root . '/app/view/fragment/fragmentProjetJumbotron.html'; ?>
+
+
+    <hr>
         <h5>Selection d'un Projet :</h5>
 
         <form role="form" method='get' action='router.php'>
@@ -26,9 +28,9 @@ require ($root . '/app/view/fragment/fragmentProjetHeader.html');
             </div>
             <p/>
             <br/> 
-            <button class="btn btn-primary" type="submit">Go</button>
+            <button class="btn btn-dark" type="submit">soumettre</button>
         </form>
-        <p/>
+        <p/><br>
     </div>
     <?php include $root . '/app/view/fragment/fragmentProjetFooter.html'; ?>
 

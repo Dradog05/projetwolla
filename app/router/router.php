@@ -6,6 +6,7 @@ require('../controller/ControllerProjet.php');
 require('../controller/ControllerRendezVous.php');
 require('../controller/ControllerAccueil.php');
 require('../controller/ControllerConnexion.php');
+require('../controller/ControllerInovation.php');
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -62,7 +63,10 @@ switch($action):
     case"prendreRdvEtudiantVerification":
         ControllerRendezVous::$action();
         break;
-
+    case"fonction_originale":
+    case"ameliorationMVC":
+        ControllerInovation::$action();
+        break;
     default:
         ControllerAccueil::afficherAccueil();
 

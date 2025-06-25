@@ -1,16 +1,17 @@
 
 <!-- ----- début viewAjoutExaminateur -->
 <?php
-require ($root . '/app/view/fragment/fragmentProjetHeader.html');
+require($root . '/app/view/fragment/fragmentProjetHeader.html');
 ?>
 
 <body>
-  <div class="container">
-    <?php
-    include $root . '/app/view/fragment/fragmentProjetMenu.php';
-    include $root . '/app/view/fragment/fragmentProjetJumbotron.html';
-    ?>
-    <!-- ===================================================== -->
+  <div class="container rounded">
+    <?php include $root . '/app/view/fragment/fragmentProjetMenu.php'; ?>
+
+    <?php include $root . '/app/view/fragment/fragmentProjetJumbotron.html'; ?>
+
+
+    <hr>
     <?php
     if ($results) {
      echo ("<h3>L'examinateur a été ajouté </h3>");
@@ -22,7 +23,7 @@ require ($root . '/app/view/fragment/fragmentProjetHeader.html');
      echo ("<li>Mot de Passe  = " . $_GET['password'] . "</li>");
      echo '<form method="get" action="router.php">
         <input type="hidden" name="action" value="afficherAccueil">
-        <button type="submit" class="btn btn-primary">Retour à l\'accueil</button>
+        <button type="submit" class="btn btn-dark">Retour à l\'accueil</button>
       </form>';
      echo("</ul>");
     } else {
@@ -31,7 +32,7 @@ require ($root . '/app/view/fragment/fragmentProjetHeader.html');
      
     }
 
-    echo("</div>");
+    echo("<br></div>");
     
     include $root . '/app/view/fragment/fragmentProjetFooter.html';
     ?>

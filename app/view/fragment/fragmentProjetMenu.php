@@ -16,22 +16,20 @@
         $menu='<li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Inovation</a>
                 <ul class="dropdown-menu text-bg-dark">
-                  <!--  Proposer des innovations
-                  <li><a class="dropdown-item text-bg-dark" href="router.php?action=">Supression d'."'un vin</a></li>
-                  <li><a class="."'dropdown-item text-bg-dark".'" href="router.php?action=">Supression d'.'"un producteur</a></li>
-                  -->
+                  <li><a class="dropdown-item text-bg-dark" href="router.php?action=fonction_originale">Proposition d'."'une nouvelle fonctionnalité sur les datas</a></li>
+                  <li><a class='dropdown-item text-bg-dark' href='router.php?action=ameliorationMVC'>Proposition d'amélioration MVC</a></li>
+                  
                 </ul>
-         </li>
+         </li>".'
          <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Se connecter</a>
                 <ul class="dropdown-menu text-bg-dark">
                   <li><a class="dropdown-item text-bg-dark" href="router.php?action=loginForm">Login</a></li>
-                  <li><a class="dropdown-item text-bg-dark" href="router.php?action=SubscribeForm">S'."'inscrire</a></li>
-                  <li><a class=".'"dropdown-item text-bg-dark" href="router.php?action=logout">Deconnexion</a></li>
-                </ul>
-         </li>';
-         if($_SESSION['login']=="?"){echo $menu_init.$menu;}
-         else { 
+                  <li><a class="dropdown-item text-bg-dark" href="router.php?action=SubscribeForm">S'."'inscrire</a></li>";
+        if($_SESSION['login']=="?"){echo $menu_init.$menu.'</ul>
+         </li>';}
+         else {$menu=$menu."<li><a class=".'"dropdown-item text-bg-dark" href="router.php?action=logout">Deconnexion</a></li>';
+         
             if ($_SESSION['role_etudiant']==true){
                 $menu='<li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Etudiant</a>
