@@ -43,7 +43,11 @@ class ControllerPersonne {
             $id_projet = htmlspecialchars($_GET['projet']); 
         $results = ModelCreneau::getExaminateurParProjet($id_projet);
         include 'config.php';
-        $vue = $root . '/app/view/Examinateur/viewListeExaminateurParProjet.php';
+        if($results){
+        $vue = $root . '/app/view/Examinateur/viewListeExaminateurParProjet.php';}
+        else{
+        $vue = $root . '/app/view/Examinateur/viewListeExaminateurParProjetVide.php';
+        }
         require($vue);
     }
     public static function listeProjetExaminateur(){

@@ -47,7 +47,12 @@ class ControllerProjet {
         $id_projet = htmlspecialchars($_GET['projet']);
         $results = ModelCreneau::getPlanningParProjet($id_projet);
         include'config.php';
-        $vue = $root . '/app/view/projet/viewPlanningParProjet.php';
+        if($results){
+             $vue = $root . '/app/view/projet/viewPlanningParProjet.php';
+        }
+        else{
+            $vue = $root . '/app/view/projet/viewPlanningParProjetVide.php';
+        }
         require($vue);
     }
 }
